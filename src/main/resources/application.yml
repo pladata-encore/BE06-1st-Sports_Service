@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/sports_service?serverTimezone=Asia/Seoul
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 8181
+
+
+# log level setting
+logging:
+  level:
+    root: info
+    SportsService:
+      backend: debug
+    org:
+      hibernate:
+        SQL: debug
+
+sns:
+  kakao:
+    app-key: 75ca9da2f553df0105a0728660dc7bcc
+    redirect-uri: http://localhost:8181/kakao/code
+    token-uri: https://kauth.kakao.com/oauth/token
